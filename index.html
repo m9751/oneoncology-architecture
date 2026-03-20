@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OneOncology — Integration & Agent Architecture Brief</title>
+<title>OneOncology — Integration & Agent Architecture</title>
 <style>
 :root {
   --navy: #0A1628;
@@ -20,7 +20,6 @@
   --mulesoft-dark: #0078A8;
   --salesforce: #00A1E0;
   --salesforce-dark: #032D60;
-  --informatica: #FF6D00;
   --green: #10B981;
   --green-bg: #064E3B;
   --yellow: #F59E0B;
@@ -40,294 +39,65 @@ body {
   line-height: 1.6;
 }
 
-/* Navigation */
 .nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 240px;
-  height: 100vh;
-  background: var(--navy-light);
-  border-right: 1px solid var(--navy-mid);
-  padding: 24px 16px;
-  overflow-y: auto;
-  z-index: 100;
+  position: fixed; top: 0; left: 0; width: 240px; height: 100vh;
+  background: var(--navy-light); border-right: 1px solid var(--navy-mid);
+  padding: 24px 16px; overflow-y: auto; z-index: 100;
 }
-.nav-logo {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--mulesoft);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 8px;
-}
-.nav-subtitle {
-  font-size: 11px;
-  color: var(--gray-400);
-  margin-bottom: 32px;
-  line-height: 1.4;
-}
-.nav a {
-  display: block;
-  color: var(--gray-400);
-  text-decoration: none;
-  font-size: 13px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  margin-bottom: 2px;
-  transition: all 0.2s;
-}
-.nav a:hover, .nav a.active {
-  color: var(--white);
-  background: var(--navy-mid);
-}
-.nav a .nav-num {
-  color: var(--mulesoft);
-  font-weight: 600;
-  margin-right: 8px;
-  font-size: 11px;
-}
+.nav-logo { font-size: 13px; font-weight: 700; color: var(--mulesoft); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+.nav-subtitle { font-size: 11px; color: var(--gray-400); margin-bottom: 32px; line-height: 1.4; }
+.nav a { display: block; color: var(--gray-400); text-decoration: none; font-size: 13px; padding: 8px 12px; border-radius: 6px; margin-bottom: 2px; transition: all 0.2s; }
+.nav a:hover, .nav a.active { color: var(--white); background: var(--navy-mid); }
+.nav a .nav-num { color: var(--mulesoft); font-weight: 600; margin-right: 8px; font-size: 11px; }
 
-/* Main content */
-.main {
-  margin-left: 240px;
-  padding: 0;
-}
+.main { margin-left: 240px; padding: 0; }
 
-/* Sections */
-.section {
-  padding: 80px 64px;
-  border-bottom: 1px solid var(--navy-mid);
-  max-width: 1200px;
-}
+.section { padding: 80px 64px; border-bottom: 1px solid var(--navy-mid); max-width: 1200px; }
 
 /* Hero */
-.hero {
-  padding: 120px 64px 80px;
-  max-width: 1200px;
-}
-.hero-badge {
-  display: inline-block;
-  background: var(--mulesoft);
-  color: var(--white);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 6px 16px;
-  border-radius: 4px;
-  margin-bottom: 24px;
-}
-.hero h1 {
-  font-size: 42px;
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.2;
-  margin-bottom: 16px;
-}
+.hero { padding: 120px 64px 80px; max-width: 1200px; }
+.hero-badge { display: inline-block; background: var(--mulesoft); color: var(--white); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 4px; margin-bottom: 24px; }
+.hero h1 { font-size: 42px; font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
 .hero h1 span { color: var(--mulesoft); }
-.hero-sub {
-  font-size: 20px;
-  color: var(--gray-300);
-  max-width: 720px;
-  margin-bottom: 40px;
-}
-.hero-metrics {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 48px;
-}
-.metric-card {
-  background: var(--navy-light);
-  border: 1px solid var(--navy-mid);
-  border-radius: 12px;
-  padding: 24px;
-}
-.metric-card .value {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--mulesoft);
-}
-.metric-card .label {
-  font-size: 13px;
-  color: var(--gray-400);
-  margin-top: 4px;
-}
+.hero-sub { font-size: 20px; color: var(--gray-300); max-width: 720px; margin-bottom: 40px; }
+.hero-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
+.metric-card { background: var(--navy-light); border: 1px solid var(--navy-mid); border-radius: 12px; padding: 24px; }
+.metric-card .value { font-size: 32px; font-weight: 700; color: var(--mulesoft); }
+.metric-card .label { font-size: 13px; color: var(--gray-400); margin-top: 4px; }
 
-/* Section headers */
-.section h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-.section .section-num {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--mulesoft);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-}
-.section .headline {
-  font-size: 18px;
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 32px;
-  font-style: italic;
-}
+.section h2 { font-size: 32px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.section .section-num { font-size: 12px; font-weight: 700; color: var(--mulesoft); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+.section .headline { font-size: 18px; color: var(--accent); font-weight: 600; margin-bottom: 32px; font-style: italic; }
 
-/* Cards */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin: 32px 0;
-}
-.card {
-  background: var(--navy-light);
-  border: 1px solid var(--navy-mid);
-  border-radius: 12px;
-  padding: 28px;
-}
-.card h3 {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 12px;
-}
-.card p {
-  font-size: 14px;
-  color: var(--gray-300);
-  line-height: 1.7;
-}
-.card .tag {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 4px;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+.card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 32px 0; }
+.card { background: var(--navy-light); border: 1px solid var(--navy-mid); border-radius: 12px; padding: 28px; }
+.card h3 { font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 12px; }
+.card p { font-size: 14px; color: var(--gray-300); line-height: 1.7; }
+.card .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 .tag-critical { background: var(--red-bg); color: var(--red); }
 .tag-high { background: var(--yellow-bg); color: var(--yellow); }
 .tag-mulesoft { background: rgba(0,161,223,0.15); color: var(--mulesoft); }
 
-/* Tables */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 24px 0;
-  font-size: 14px;
-}
-thead th {
-  background: var(--navy-light);
-  color: var(--gray-300);
-  font-weight: 600;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 12px 16px;
-  text-align: left;
-  border-bottom: 2px solid var(--navy-mid);
-}
-tbody td {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--navy-mid);
-  color: var(--gray-200);
-}
+table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+thead th { background: var(--navy-light); color: var(--gray-300); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; padding: 12px 16px; text-align: left; border-bottom: 2px solid var(--navy-mid); }
+tbody td { padding: 12px 16px; border-bottom: 1px solid var(--navy-mid); color: var(--gray-200); }
 tbody tr:hover { background: rgba(0,161,223,0.05); }
 
-/* Fit badges */
-.fit-green {
-  display: inline-block;
-  background: var(--green-bg);
-  color: var(--green);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 4px;
-}
-.fit-yellow {
-  display: inline-block;
-  background: var(--yellow-bg);
-  color: var(--yellow);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 4px;
-}
-.fit-red {
-  display: inline-block;
-  background: var(--red-bg);
-  color: var(--red);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 4px;
-}
+.diagram-container { background: var(--navy-light); border: 1px solid var(--navy-mid); border-radius: 12px; padding: 32px; margin: 32px 0; overflow-x: auto; }
+.diagram-container .diagram-title { font-size: 14px; font-weight: 600; color: var(--gray-300); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
 
-/* SVG container */
-.diagram-container {
-  background: var(--navy-light);
-  border: 1px solid var(--navy-mid);
-  border-radius: 12px;
-  padding: 32px;
-  margin: 32px 0;
-  overflow-x: auto;
-}
-.diagram-container .diagram-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--gray-300);
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Callout box */
-.callout {
-  background: rgba(0,161,223,0.08);
-  border-left: 4px solid var(--mulesoft);
-  border-radius: 0 8px 8px 0;
-  padding: 20px 24px;
-  margin: 24px 0;
-}
-.callout-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--mulesoft);
-  margin-bottom: 8px;
-}
-.callout p {
-  font-size: 14px;
-  color: var(--gray-300);
-}
-
-.callout-amber {
-  background: rgba(245,158,11,0.08);
-  border-left: 4px solid var(--amber);
-}
+.callout { background: rgba(0,161,223,0.08); border-left: 4px solid var(--mulesoft); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 24px 0; }
+.callout-title { font-size: 14px; font-weight: 700; color: var(--mulesoft); margin-bottom: 8px; }
+.callout p { font-size: 14px; color: var(--gray-300); }
+.callout-amber { background: rgba(245,158,11,0.08); border-left: 4px solid var(--amber); }
 .callout-amber .callout-title { color: var(--amber); }
 
-/* Footer */
-.footer {
-  padding: 40px 64px;
-  font-size: 12px;
-  color: var(--gray-500);
-  border-top: 1px solid var(--navy-mid);
-  max-width: 1200px;
-}
+.footer { padding: 40px 64px; font-size: 12px; color: var(--gray-500); border-top: 1px solid var(--navy-mid); max-width: 1200px; }
 
-/* Lists */
 ul { margin: 12px 0 12px 20px; }
 li { margin-bottom: 8px; font-size: 14px; color: var(--gray-300); }
 li strong { color: var(--gray-100); }
 
-/* Responsive */
 @media (max-width: 768px) {
   .nav { display: none; }
   .main { margin-left: 0; }
@@ -336,7 +106,6 @@ li strong { color: var(--gray-100); }
   .hero-metrics { grid-template-columns: repeat(2, 1fr); }
   .card-grid { grid-template-columns: 1fr; }
 }
-
 @media print {
   .nav { display: none; }
   .main { margin-left: 0; }
@@ -349,24 +118,22 @@ li strong { color: var(--gray-100); }
 
 <!-- Navigation -->
 <nav class="nav">
-  <div class="nav-logo">SmokinArchitect</div>
-  <div class="nav-subtitle">OneOncology<br>Integration & Agent Architecture</div>
-  <a href="#exec"><span class="nav-num">01</span> Executive Summary</a>
+  <div class="nav-logo">Architecture Brief</div>
+  <div class="nav-subtitle">OneOncology<br>Integration &amp; Agent Architecture</div>
+  <a href="#overview"><span class="nav-num">01</span> Overview</a>
   <a href="#current"><span class="nav-num">02</span> Current State</a>
   <a href="#architecture"><span class="nav-num">03</span> Solution Architecture</a>
-  <a href="#agentic"><span class="nav-num">04</span> Agentic & MCP Architecture</a>
-  <a href="#options"><span class="nav-num">05</span> Options Considered</a>
-  <a href="#fit"><span class="nav-num">06</span> Fit Assessment</a>
+  <a href="#agentic"><span class="nav-num">04</span> MCP &amp; Agent Architecture</a>
 </nav>
 
 <!-- Main Content -->
 <div class="main">
 
-<!-- Hero -->
-<div class="hero" id="exec">
-  <div class="hero-badge">Solution Architecture Brief</div>
+<!-- Hero / Overview -->
+<div class="hero" id="overview">
+  <div class="hero-badge">Integration Architecture</div>
   <h1>OneOncology: <span>Build the Connection Once, Every Agent Inherits It</span></h1>
-  <p class="hero-sub">Cencora's $7.4B acquisition mandates technology standardization across 36 practices and 645+ sites. The integration layer that powers OneAnalytics today becomes the MCP tool layer that governs every AI agent tomorrow. One investment, two outcomes.</p>
+  <p class="hero-sub">Post-acquisition technology standardization across 36 practices requires an integration fabric that serves two purposes: centralizing data for OneAnalytics and governing how AI tools access enterprise systems. The same API layer does both.</p>
 
   <div class="hero-metrics">
     <div class="metric-card">
@@ -388,66 +155,32 @@ li strong { color: var(--gray-100); }
   </div>
 </div>
 
-<!-- Section 1: Executive Summary (continued) -->
-<div class="section">
-  <div class="section-num">Section 01 &mdash; Executive Summary</div>
-  <h2>The Strategic Reframe</h2>
-  <div class="headline">"You're not building a data platform. You're building the nervous system for autonomous clinical operations."</div>
-
-  <p style="font-size:16px; color:var(--gray-200); margin-bottom:24px;">OneOncology is deploying AI clinical tools (Flatiron Assist, Genomic Lookback, ViTE, ProMPT) and building OneAnalytics to centralize data from 36 heterogeneous practices. Both initiatives are blocked by the same bottleneck: <strong>no integration fabric connecting their systems.</strong></p>
-
-  <p style="font-size:16px; color:var(--gray-200); margin-bottom:24px;">Justice West is already exploring MCP (Model Context Protocol) to manage AI agents across the business. Without a governed connectivity layer, every agent builds its own point-to-point connection &mdash; resulting in ungoverned bot sprawl with no audit trails, no retry logic, and no observability.</p>
-
-  <p style="font-size:16px; color:var(--gray-200); margin-bottom:32px;">MuleSoft solves both problems with the same architecture: API-led connectivity normalizes data for OneAnalytics <strong>and</strong> exposes system capabilities as MCP tools for every AI agent. The APIs Andy Corts builds in Phase 1 become the tool layer Justice West uses in Phase 2.</p>
-
-  <div class="card-grid">
-    <div class="card">
-      <h3>Expected Outcome 1</h3>
-      <p><strong>OneAnalytics acceleration:</strong> Normalized data from OncoEMR, GE Centricity, Salesforce, and practice management systems flowing through a governed API layer &mdash; replacing fragile batch extracts and manual aggregation across 36 practices.</p>
-    </div>
-    <div class="card">
-      <h3>Expected Outcome 2</h3>
-      <p><strong>Agent governance at scale:</strong> Every AI tool (Flatiron Assist, ViTE, ProMPT, future Cencora agents) calls enterprise systems through MuleSoft MCP Server &mdash; logged, rate-limited, auth-controlled, and auditable. Zero bot sprawl.</p>
-    </div>
-    <div class="card">
-      <h3>Expected Outcome 3</h3>
-      <p><strong>Mirth displacement path:</strong> Incremental migration from Mirth Connect HL7 pipes to MuleSoft APIs using the strangler-fig pattern &mdash; no rip-and-replace, no downtime, no workflow disruption during transition.</p>
-    </div>
-    <div class="card">
-      <h3>Expected Outcome 4</h3>
-      <p><strong>Cencora alignment:</strong> OneOncology expansion packages into the existing $2.3M Cencora relationship (renewal 8/26/26), proving the platform scales across subsidiaries for enterprise-wide standardization.</p>
-    </div>
-  </div>
-</div>
-
 <!-- Section 2: Current State -->
 <div class="section" id="current">
   <div class="section-num">Section 02 &mdash; Current State Assessment</div>
   <h2>Where OneOncology Stands Today</h2>
   <div class="headline">36 practices, 8+ enterprise systems, and every AI tool building its own connection.</div>
 
-  <p style="font-size:15px; color:var(--gray-300); margin-bottom:32px;">OneOncology's architecture reflects years of growth through acquisition &mdash; each practice brought its own EHR, billing system, and data workflows. This creates integration complexity that manual approaches and clinical message routers can no longer sustain.</p>
+  <p style="font-size:15px; color:var(--gray-300); margin-bottom:32px;">OneOncology's architecture reflects years of growth through acquisition &mdash; each practice brought its own EHR, billing system, and data workflows. This creates integration complexity that manual approaches and clinical message routers can no longer sustain at the scale Cencora's standardization mandate requires.</p>
 
-  <!-- System Landscape Table -->
   <h3 style="color:var(--white); font-size:20px; margin-bottom:16px;">Known System Landscape</h3>
   <table>
     <thead>
       <tr><th>System</th><th>Category</th><th>Integration Relevance</th></tr>
     </thead>
     <tbody>
-      <tr><td><strong>OncoEMR (Flatiron)</strong></td><td>Clinical EHR</td><td>Primary data source for OneAnalytics. IDP fax entry point. Medsender displacement target.</td></tr>
-      <tr><td><strong>GE Centricity</strong></td><td>Clinical EHR (legacy)</td><td>Heterogeneous EHR normalization across acquired practices.</td></tr>
-      <tr><td><strong>Salesforce CRM</strong></td><td>CRM</td><td>Already in stack &mdash; MuleSoft is native integration layer. Immediate credibility.</td></tr>
-      <tr><td><strong>Azure (multi-region)</strong></td><td>Cloud Platform</td><td>Primary cloud. CloudHub 2.0 aligns directly.</td></tr>
-      <tr><td><strong>Databricks</strong></td><td>Data Analytics</td><td>Complementary &mdash; MuleSoft handles API/event orchestration above the data layer.</td></tr>
+      <tr><td><strong>OncoEMR (Flatiron)</strong></td><td>Clinical EHR</td><td>Primary clinical data source across practices. FHIR R4 and HL7v2 interfaces.</td></tr>
+      <tr><td><strong>GE Centricity</strong></td><td>Clinical EHR (legacy)</td><td>Present in acquired practices. Adds heterogeneous EHR normalization requirement.</td></tr>
+      <tr><td><strong>Salesforce CRM</strong></td><td>CRM</td><td>In production. Referral tracking, provider network management.</td></tr>
+      <tr><td><strong>Azure (multi-region)</strong></td><td>Cloud Platform</td><td>Primary cloud infrastructure. CloudHub 2.0 aligns natively.</td></tr>
+      <tr><td><strong>Databricks</strong></td><td>Data Analytics</td><td>Analytics and ML workloads. Complementary &mdash; API orchestration sits above the data layer.</td></tr>
       <tr><td><strong>ServiceNow</strong></td><td>ITSM</td><td>IT operations workflows across 645+ sites.</td></tr>
-      <tr><td><strong>Workday</strong></td><td>HR/Finance</td><td>Shared services buildout under Cencora integration mandate.</td></tr>
-      <tr><td><strong>Mirth Connect</strong></td><td>Integration</td><td>Likely incumbent for HL7/FHIR clinical messaging. Channel-based, not API-led.</td></tr>
+      <tr><td><strong>Workday</strong></td><td>HR/Finance</td><td>Shared services under Cencora's enterprise integration mandate.</td></tr>
+      <tr><td><strong>Mirth Connect</strong></td><td>Integration</td><td>Likely incumbent for HL7/FHIR clinical messaging. Channel-based architecture.</td></tr>
     </tbody>
   </table>
 
-  <!-- Clinical Tools -->
-  <h3 style="color:var(--white); font-size:20px; margin:32px 0 16px;">AI & Clinical Decision Tools (Active)</h3>
+  <h3 style="color:var(--white); font-size:20px; margin:32px 0 16px;">AI &amp; Clinical Decision Tools (Active)</h3>
   <table>
     <thead>
       <tr><th>Tool</th><th>Purpose</th><th>Connection Pattern Today</th></tr>
@@ -461,7 +194,6 @@ li strong { color: var(--gray-100); }
     </tbody>
   </table>
 
-  <!-- Complexity Drivers -->
   <h3 style="color:var(--white); font-size:20px; margin:32px 0 16px;">Complexity Drivers</h3>
   <div class="card-grid">
     <div class="card">
@@ -470,42 +202,42 @@ li strong { color: var(--gray-100); }
       <p>Each clinical tool connects directly to OncoEMR. Each acquired practice brought its own EHR and billing workflows. No shared API layer means every new tool or practice multiplies the connection count.</p>
     </div>
     <div class="card">
-      <span class="tag tag-critical">Agent Sprawl Risk</span>
+      <span class="tag tag-critical">Agent Governance Gap</span>
       <h3>Ungoverned AI Connections</h3>
-      <p>5+ AI tools calling systems independently with no audit trail, no retry logic, no auth governance, no observability. Cencora will mandate compliance controls &mdash; there is no governance layer to enforce them.</p>
+      <p>5+ AI tools calling systems independently with no audit trail, no retry logic, no authentication governance, no observability. Enterprise compliance controls cannot be enforced without a governance layer.</p>
     </div>
     <div class="card">
-      <span class="tag tag-high">Mirth Ceiling</span>
-      <h3>Clinical Router, Not a Platform</h3>
-      <p>Mirth Connect handles HL7/FHIR message routing well. It cannot connect Salesforce, Workday, ServiceNow, or Databricks. It has no MCP support, no agent orchestration, no enterprise workflow capability.</p>
+      <span class="tag tag-high">Platform Ceiling</span>
+      <h3>Clinical Router vs. Enterprise Fabric</h3>
+      <p>Mirth Connect handles HL7/FHIR message routing effectively for clinical messaging. It was not designed to connect Salesforce, Workday, ServiceNow, or Databricks &mdash; nor to support agent orchestration or enterprise workflow patterns.</p>
     </div>
     <div class="card">
       <span class="tag tag-high">Regulatory Clock</span>
       <h3>CMS PA Automation Deadline</h3>
-      <p>Electronic prior authorization required by Jan 1, 2027. 39 PA requests per physician per week across 645+ sites. EHR-to-payer API integration must be built &mdash; batch file exchanges won't meet the mandate.</p>
+      <p>Electronic prior authorization required by January 1, 2027. 39 PA requests per physician per week across 645+ sites. EHR-to-payer API integration must be operational before the mandate takes effect.</p>
     </div>
   </div>
 
   <div class="callout">
-    <div class="callout-title">Discovery Questions for CTO Andy Corts</div>
-    <p>1. What's the current integration pattern between OncoEMR and your clinical tools &mdash; are they calling APIs or using database-level connections?<br>
-    2. How are you planning to normalize data across GE Centricity practices into OneAnalytics &mdash; ETL batch, real-time CDC, or something else?<br>
+    <div class="callout-title">Discovery Questions for the CTO</div>
+    <p>1. What is the current integration pattern between OncoEMR and your clinical tools &mdash; are they calling APIs or using database-level connections?<br>
+    2. How are you planning to normalize data across GE Centricity practices into OneAnalytics &mdash; ETL batch, real-time CDC, or another approach?<br>
     3. Where does Mirth Connect sit in the architecture today &mdash; which message types, which practices, how many channels?<br>
-    4. How is Cencora defining technology standardization requirements &mdash; is there an enterprise architecture mandate coming?</p>
+    4. How is Cencora defining technology standardization requirements &mdash; is there an enterprise architecture mandate in development?</p>
   </div>
 </div>
 
 <!-- Section 3: Solution Architecture -->
 <div class="section" id="architecture">
-  <div class="section-num">Section 03 &mdash; Solution Architecture</div>
+  <div class="section-num">Section 03 &mdash; Proposed Architecture</div>
   <h2>API-Led Connectivity as Integration Fabric</h2>
   <div class="headline">Three layers. One fabric. Every system connected. Every API reusable by agents.</div>
 
-  <!-- Architecture Diagram -->
+  <p style="font-size:15px; color:var(--gray-300); margin-bottom:32px;">The recommended architecture uses an API-led connectivity pattern with three layers: System APIs that normalize access to each source system, Process APIs that orchestrate business logic across systems, and Experience APIs that serve specific consumers (OneAnalytics, AI agents, PA workflows, quality reporting). Every API built for the data platform is simultaneously available as a governed tool for AI agents.</p>
+
   <div class="diagram-container">
-    <div class="diagram-title">Solution Architecture Overview &mdash; API-Led Connectivity</div>
+    <div class="diagram-title">Proposed Architecture &mdash; API-Led Connectivity</div>
     <svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
-      <!-- Background -->
       <rect width="1280" height="720" fill="#0A1628"/>
 
       <!-- Layer Labels -->
@@ -605,8 +337,7 @@ li strong { color: var(--gray-100); }
       <text x="1160" y="660" fill="#9CA3AF" font-size="12" font-weight="600" text-anchor="middle">PM / Billing</text>
       <text x="1160" y="676" fill="#6B7280" font-size="10" text-anchor="middle">36 practice variants</text>
 
-      <!-- Connection arrows (simplified vertical lines) -->
-      <!-- SAPI to Source -->
+      <!-- Connection arrows -->
       <line x1="160" y1="550" x2="140" y2="635" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4,3"/>
       <line x1="380" y1="550" x2="320" y2="635" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4,3"/>
       <line x1="600" y1="550" x2="500" y2="635" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4,3"/>
@@ -614,14 +345,11 @@ li strong { color: var(--gray-100); }
       <line x1="1000" y1="550" x2="830" y2="635" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4,3"/>
       <line x1="1180" y1="550" x2="990" y2="635" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4,3"/>
 
-      <!-- PAPI to SAPI -->
-      <line x1="160" y1="460" x2="160" y2="480" stroke="#00A1DF" stroke-width="1.5"/>
       <line x1="240" y1="360" x2="160" y2="460" stroke="#00A1DF" stroke-width="1.5"/>
       <line x1="240" y1="360" x2="380" y2="460" stroke="#00A1DF" stroke-width="1.5"/>
       <line x1="630" y1="360" x2="160" y2="460" stroke="#00A1DF" stroke-width="1"/>
       <line x1="1025" y1="360" x2="600" y2="460" stroke="#00A1DF" stroke-width="1"/>
 
-      <!-- XAPI to PAPI -->
       <line x1="190" y1="140" x2="240" y2="280" stroke="#00A1DF" stroke-width="1.5"/>
       <line x1="480" y1="140" x2="240" y2="280" stroke="#00A1DF" stroke-width="1"/>
       <line x1="480" y1="140" x2="630" y2="280" stroke="#00A1DF" stroke-width="1"/>
@@ -633,22 +361,19 @@ li strong { color: var(--gray-100); }
       <text x="530" y="178" fill="#F59E0B" font-size="10" font-weight="600">&#x2191; OneAnalytics</text>
       <text x="530" y="194" fill="#F59E0B" font-size="10" font-weight="600">&#x2191; MCP Tools</text>
 
-      <!-- MuleSoft Anypoint Platform label -->
       <rect x="40" y="430" width="1200" height="2" fill="#00A1DF" opacity="0.3"/>
       <text x="1220" y="435" fill="#00A1DF" font-size="9" font-weight="600" text-anchor="end" opacity="0.6">ANYPOINT PLATFORM</text>
-
       <rect x="40" y="240" width="1200" height="2" fill="#00A1DF" opacity="0.3"/>
       <rect x="40" y="590" width="1200" height="2" fill="#6B7280" opacity="0.3"/>
     </svg>
   </div>
 
   <div class="callout">
-    <div class="callout-title">Dual-Purpose Architecture</div>
-    <p>Every System API and Process API built for OneAnalytics is simultaneously an MCP-callable tool for AI agents. The amber indicators in the diagram show where the same API serves both the data platform and the agentic layer. This is the "build once, serve twice" economics that makes this investment fundamentally different from a traditional integration project.</p>
+    <div class="callout-title">Dual-Purpose Design</div>
+    <p>Every System API and Process API built for OneAnalytics is simultaneously available as an MCP-callable tool for AI agents. The amber indicators in the diagram show where the same API serves both the data platform and the agentic layer. This is what makes the investment fundamentally different from a traditional integration project &mdash; one build, two outcomes.</p>
   </div>
 
-  <!-- API Inventory -->
-  <h3 style="color:var(--white); font-size:20px; margin:32px 0 16px;">API Inventory &mdash; What Gets Built</h3>
+  <h3 style="color:var(--white); font-size:20px; margin:32px 0 16px;">API Inventory</h3>
   <table>
     <thead>
       <tr><th>API</th><th>Layer</th><th>Connects To</th><th>Data Platform Use</th><th>Agent Tool Use</th></tr>
@@ -665,28 +390,30 @@ li strong { color: var(--gray-100); }
       <tr><td><strong>Revenue Cycle PAPI</strong></td><td>Process</td><td>OncoEMR + Billing SAPIs</td><td>Claims and reimbursement data</td><td>check_claim_status, get_pa_status</td></tr>
     </tbody>
   </table>
+
+  <div class="callout">
+    <div class="callout-title">Migration Approach: Strangler-Fig Pattern</div>
+    <p>Existing Mirth Connect channels continue operating during migration. Each MuleSoft API wraps the corresponding Mirth channel, and traffic migrates incrementally &mdash; no rip-and-replace, no downtime, no workflow disruption. Mirth channels are decommissioned only after the API alternative is validated in production per-channel.</p>
+  </div>
 </div>
 
 <!-- Section 4: Agentic & MCP Architecture -->
 <div class="section" id="agentic">
-  <div class="section-num">Section 04 &mdash; Agentic &amp; MCP Architecture</div>
+  <div class="section-num">Section 04 &mdash; MCP &amp; Agent Architecture</div>
   <h2>MuleSoft as MCP Server</h2>
   <div class="headline">Build the connection once. Every agent inherits it. Every action is governed.</div>
 
-  <p style="font-size:15px; color:var(--gray-300); margin-bottom:16px;">Justice West is exploring MCP to manage AI bots across the enterprise. The pattern is straightforward: MuleSoft APIs built in Section 3 are exposed as governed MCP tools via the MuleSoft MCP Connector (v1.3.1). Any MCP-compatible agent &mdash; Agentforce, Claude, internal bots &mdash; can discover and call these tools through a standard protocol.</p>
+  <p style="font-size:15px; color:var(--gray-300); margin-bottom:16px;">The MCP (Model Context Protocol) pattern is straightforward: the MuleSoft APIs described in Section 3 are exposed as governed tools via the MuleSoft MCP Connector. Any MCP-compatible agent &mdash; whether built on Agentforce, third-party AI platforms, or internal tools &mdash; can discover and call these tools through a standard protocol.</p>
 
-  <p style="font-size:15px; color:var(--gray-300); margin-bottom:32px;">This means the integration investment for OneAnalytics simultaneously creates the tool layer for autonomous clinical operations. No separate agent infrastructure needed.</p>
+  <p style="font-size:15px; color:var(--gray-300); margin-bottom:32px;">This means the integration investment for OneAnalytics simultaneously creates the tool layer for governed clinical AI operations. No separate agent infrastructure is required.</p>
 
-  <!-- Agent Topology Diagram -->
   <div class="diagram-container">
     <div class="diagram-title">Agent Topology &mdash; MCP Server Architecture</div>
     <svg viewBox="0 0 1280 680" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
       <rect width="1280" height="680" fill="#0A1628"/>
 
-      <!-- Agent Layer Label -->
       <text x="40" y="30" fill="#F59E0B" font-size="12" font-weight="700" letter-spacing="2">AI AGENTS (MCP CLIENTS)</text>
 
-      <!-- Agents -->
       <rect x="60" y="50" width="200" height="70" rx="8" fill="#1F2937" stroke="#F59E0B" stroke-width="2"/>
       <text x="160" y="78" fill="#F59E0B" font-size="13" font-weight="600" text-anchor="middle">Clinical Triage Agent</text>
       <text x="160" y="96" fill="#9CA3AF" font-size="10" text-anchor="middle">Flatiron Assist / ViTE</text>
@@ -704,14 +431,13 @@ li strong { color: var(--gray-100); }
       <text x="850" y="96" fill="#9CA3AF" font-size="10" text-anchor="middle">QCDR measure extraction</text>
 
       <rect x="980" y="50" width="240" height="70" rx="8" fill="#1F2937" stroke="#F59E0B" stroke-width="2"/>
-      <text x="1100" y="78" fill="#F59E0B" font-size="13" font-weight="600" text-anchor="middle">Cencora Enterprise Agent</text>
-      <text x="1100" y="96" fill="#9CA3AF" font-size="10" text-anchor="middle">Future Cencora mandated AI</text>
+      <text x="1100" y="78" fill="#F59E0B" font-size="13" font-weight="600" text-anchor="middle">Enterprise AI Agents</text>
+      <text x="1100" y="96" fill="#9CA3AF" font-size="10" text-anchor="middle">Future enterprise-mandated AI</text>
 
       <!-- MCP Protocol Line -->
       <rect x="40" y="145" width="1200" height="36" rx="4" fill="rgba(245,158,11,0.08)" stroke="#F59E0B" stroke-width="1" stroke-dasharray="6,3"/>
       <text x="640" y="168" fill="#F59E0B" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="3">MCP PROTOCOL (STREAMABLE HTTP)</text>
 
-      <!-- Arrows from agents to MCP line -->
       <line x1="160" y1="120" x2="160" y2="145" stroke="#F59E0B" stroke-width="1.5"/>
       <line x1="390" y1="120" x2="390" y2="145" stroke="#F59E0B" stroke-width="1.5"/>
       <line x1="620" y1="120" x2="620" y2="145" stroke="#F59E0B" stroke-width="1.5"/>
@@ -720,21 +446,19 @@ li strong { color: var(--gray-100); }
 
       <!-- Flex Gateway -->
       <rect x="40" y="205" width="1200" height="50" rx="6" fill="#1A2A45" stroke="#EF4444" stroke-width="2"/>
-      <text x="640" y="228" fill="#EF4444" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="1">FLEX GATEWAY &mdash; GOVERNANCE LAYER</text>
-      <text x="640" y="244" fill="#9CA3AF" font-size="10" text-anchor="middle">JWT validation &bull; PII detection &bull; rate limiting &bull; schema validation &bull; SSE logging &bull; ABAC policies</text>
+      <text x="640" y="228" fill="#EF4444" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="1">API GATEWAY &mdash; GOVERNANCE LAYER</text>
+      <text x="640" y="244" fill="#9CA3AF" font-size="10" text-anchor="middle">JWT validation &bull; PII detection &bull; rate limiting &bull; schema validation &bull; logging &bull; ABAC policies</text>
 
       <!-- MCP Connector -->
       <rect x="440" y="280" width="400" height="50" rx="6" fill="#0078A8" stroke="#00A1DF" stroke-width="2"/>
-      <text x="640" y="308" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">MuleSoft MCP Connector v1.3.1</text>
-      <text x="640" y="322" fill="#B0E0F6" font-size="10" text-anchor="middle">Any Mule app &rarr; MCP Server</text>
+      <text x="640" y="308" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">MuleSoft MCP Connector</text>
+      <text x="640" y="322" fill="#B0E0F6" font-size="10" text-anchor="middle">Any Mule application becomes an MCP Server</text>
 
-      <!-- Arrow from Gateway to MCP Connector -->
       <line x1="640" y1="255" x2="640" y2="280" stroke="#00A1DF" stroke-width="2"/>
 
-      <!-- API Layer Label -->
+      <!-- API Layer -->
       <text x="40" y="365" fill="#00A1DF" font-size="12" font-weight="700" letter-spacing="2">MULESOFT API LAYER (SAME APIS AS SECTION 03)</text>
 
-      <!-- Experience APIs -->
       <rect x="60" y="385" width="280" height="55" rx="6" fill="#0078A8" stroke="#00A1DF" stroke-width="1.5"/>
       <text x="200" y="410" fill="#fff" font-size="12" font-weight="600" text-anchor="middle">Agent Tools XAPI</text>
       <text x="200" y="426" fill="#B0E0F6" font-size="10" text-anchor="middle">MCP tool registry + routing</text>
@@ -745,9 +469,8 @@ li strong { color: var(--gray-100); }
 
       <rect x="680" y="385" width="280" height="55" rx="6" fill="#0078A8" stroke="#00A1DF" stroke-width="1.5"/>
       <text x="820" y="410" fill="#fff" font-size="12" font-weight="600" text-anchor="middle">PA Automation XAPI</text>
-      <text x="820" y="426" fill="#B0E0F6" font-size="10" text-anchor="middle">EHR &harr; Payer workflows</text>
+      <text x="820" y="426" fill="#B0E0F6" font-size="10" text-anchor="middle">EHR-to-payer workflows</text>
 
-      <!-- Arrow from MCP Connector to API Layer -->
       <line x1="640" y1="330" x2="200" y2="385" stroke="#00A1DF" stroke-width="1.5"/>
       <line x1="640" y1="330" x2="510" y2="385" stroke="#00A1DF" stroke-width="1.5"/>
       <line x1="640" y1="330" x2="820" y2="385" stroke="#00A1DF" stroke-width="1.5"/>
@@ -784,23 +507,17 @@ li strong { color: var(--gray-100); }
       <!-- Source systems -->
       <rect x="60" y="620" width="160" height="40" rx="4" fill="#1F2937" stroke="#4B5563" stroke-width="1"/>
       <text x="140" y="644" fill="#6B7280" font-size="10" text-anchor="middle">OncoEMR</text>
-
       <rect x="240" y="620" width="160" height="40" rx="4" fill="#1F2937" stroke="#4B5563" stroke-width="1"/>
       <text x="320" y="644" fill="#6B7280" font-size="10" text-anchor="middle">GE Centricity</text>
-
       <rect x="420" y="620" width="160" height="40" rx="4" fill="#1F2937" stroke="#00A1E0" stroke-width="1"/>
       <text x="500" y="644" fill="#6B7280" font-size="10" text-anchor="middle">Salesforce</text>
-
       <rect x="600" y="620" width="160" height="40" rx="4" fill="#1F2937" stroke="#4B5563" stroke-width="1"/>
       <text x="680" y="644" fill="#6B7280" font-size="10" text-anchor="middle">ServiceNow</text>
-
       <rect x="780" y="620" width="140" height="40" rx="4" fill="#1F2937" stroke="#4B5563" stroke-width="1"/>
       <text x="850" y="644" fill="#6B7280" font-size="10" text-anchor="middle">Workday</text>
-
       <rect x="940" y="620" width="160" height="40" rx="4" fill="#1F2937" stroke="#8B5CF6" stroke-width="1"/>
       <text x="1020" y="644" fill="#6B7280" font-size="10" text-anchor="middle">Databricks</text>
 
-      <!-- Connection lines SAPI to Source -->
       <line x1="140" y1="595" x2="140" y2="620" stroke="#10B981" stroke-width="1" stroke-dasharray="3,2"/>
       <line x1="320" y1="595" x2="320" y2="620" stroke="#10B981" stroke-width="1" stroke-dasharray="3,2"/>
       <line x1="500" y1="595" x2="500" y2="620" stroke="#10B981" stroke-width="1" stroke-dasharray="3,2"/>
@@ -808,7 +525,6 @@ li strong { color: var(--gray-100); }
       <line x1="850" y1="595" x2="850" y2="620" stroke="#10B981" stroke-width="1" stroke-dasharray="3,2"/>
       <line x1="1020" y1="595" x2="1020" y2="620" stroke="#10B981" stroke-width="1" stroke-dasharray="3,2"/>
 
-      <!-- Human-in-the-loop indicator -->
       <rect x="1000" y="205" width="220" height="30" rx="4" fill="rgba(245,158,11,0.15)"/>
       <text x="1110" y="224" fill="#F59E0B" font-size="10" font-weight="600" text-anchor="middle">HUMAN-IN-THE-LOOP CHECKPOINTS</text>
     </svg>
@@ -829,7 +545,7 @@ li strong { color: var(--gray-100); }
       <tr><td>Revenue Cycle PAPI</td><td><code>check_pa_status</code></td><td>PA Automation Agent</td><td>Authorization status + denial reason</td><td><span style="color:var(--green)">Autonomous</span></td></tr>
       <tr><td>Revenue Cycle PAPI</td><td><code>submit_pa_request</code></td><td>PA Automation Agent</td><td>Submission confirmation</td><td><span style="color:var(--amber)">Supervised</span></td></tr>
       <tr><td>Salesforce SAPI</td><td><code>get_provider_network</code></td><td>Referral Intake Agent</td><td>Provider directory data</td><td><span style="color:var(--green)">Autonomous</span></td></tr>
-      <tr><td>ServiceNow SAPI</td><td><code>create_incident</code></td><td>IT Ops Agent (future)</td><td>Incident number + status</td><td><span style="color:var(--amber)">Supervised</span></td></tr>
+      <tr><td>ServiceNow SAPI</td><td><code>create_incident</code></td><td>IT Operations (future)</td><td>Incident number + status</td><td><span style="color:var(--amber)">Supervised</span></td></tr>
       <tr><td>Databricks SAPI</td><td><code>run_analytics_query</code></td><td>Quality Reporting Agent</td><td>Query results (aggregated)</td><td><span style="color:var(--green)">Autonomous</span></td></tr>
     </tbody>
   </table>
@@ -840,8 +556,6 @@ li strong { color: var(--gray-100); }
     <div class="diagram-title">OneOncology Agent Maturity &mdash; Current &amp; Target</div>
     <svg viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
       <rect width="900" height="180" fill="#0A1628"/>
-
-      <!-- Level boxes -->
       <rect x="20" y="60" width="160" height="60" rx="6" fill="#1F2937" stroke="#EF4444" stroke-width="2"/>
       <text x="100" y="85" fill="#EF4444" font-size="11" font-weight="700" text-anchor="middle">LEVEL 1</text>
       <text x="100" y="102" fill="#9CA3AF" font-size="10" text-anchor="middle">Conversational</text>
@@ -864,21 +578,14 @@ li strong { color: var(--gray-100); }
       <text x="810" y="85" fill="#6B7280" font-size="11" font-weight="700" text-anchor="middle">LEVEL 5</text>
       <text x="810" y="102" fill="#4B5563" font-size="10" text-anchor="middle">Enterprise Ecosystem</text>
 
-      <!-- Arrow -->
       <line x1="180" y1="90" x2="380" y2="90" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrowhead)"/>
       <defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#F59E0B"/></marker></defs>
 
-      <!-- Labels -->
       <text x="100" y="150" fill="#EF4444" font-size="9" text-anchor="middle">Point-to-point bots</text>
       <text x="100" y="163" fill="#EF4444" font-size="9" text-anchor="middle">No governance</text>
-      <text x="460" y="150" fill="#10B981" font-size="9" text-anchor="middle">MuleSoft MCP Server</text>
+      <text x="460" y="150" fill="#10B981" font-size="9" text-anchor="middle">MCP Server pattern</text>
       <text x="460" y="163" fill="#10B981" font-size="9" text-anchor="middle">Governed orchestration</text>
     </svg>
-  </div>
-
-  <div class="callout-amber callout">
-    <div class="callout-title">Why Mirth Has Zero Play Here</div>
-    <p>Mirth Connect is a clinical message router &mdash; HL7 pipes between EHRs. It has no MCP support, no agent orchestration layer, no connectors to Salesforce/Workday/ServiceNow/Databricks, and no enterprise workflow capability. When Corts talks about "deploying clinical tools at scale," that's an enterprise integration problem, not a clinical messaging problem. Mirth solves the pipe. MuleSoft solves the platform.</p>
   </div>
 
   <!-- Governance Model -->
@@ -892,147 +599,25 @@ li strong { color: var(--gray-100); }
     <div class="card">
       <span class="tag" style="background:rgba(245,158,11,0.15); color:var(--amber);">SUPERVISED</span>
       <h3>Write Operations &amp; PHI Access</h3>
-      <p>Agent proposes, human approves before execution. Examples: <code>get_patient_demographics</code> (PHI), <code>submit_pa_request</code> (write), <code>route_referral</code> (clinical routing), <code>create_incident</code> (IT changes). Enforced via Flex Gateway policies.</p>
+      <p>Agent proposes action, human approves before execution. Examples: <code>get_patient_demographics</code> (PHI), <code>submit_pa_request</code> (write), <code>route_referral</code> (clinical routing), <code>create_incident</code> (IT changes). Enforced via API gateway policies.</p>
     </div>
     <div class="card" style="grid-column: 1 / -1;">
       <span class="tag" style="background:rgba(239,68,68,0.15); color:var(--red);">ESCALATION</span>
       <h3>Uncertainty &amp; Exception Handling</h3>
-      <p>Agent detects ambiguity or confidence below threshold and routes to human specialist. Examples: document classification below 85% confidence, patient match with multiple candidates, PA denial requiring clinical review. Ties directly to Cencora compliance requirements for HIPAA-governed environments.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Section 5: Options Considered -->
-<div class="section" id="options">
-  <div class="section-num">Section 05 &mdash; Options Considered</div>
-  <h2>Design Decisions</h2>
-  <div class="headline">Every major choice includes the road not taken.</div>
-
-  <!-- Option 1 -->
-  <h3 style="color:var(--white); font-size:18px; margin:32px 0 12px;">Decision 1: Integration Backbone</h3>
-  <div class="card-grid">
-    <div class="card" style="border-color:var(--green);">
-      <span class="tag" style="background:rgba(16,185,129,0.15); color:var(--green);">RECOMMENDED</span>
-      <h3>Option A: MuleSoft API-Led Connectivity</h3>
-      <p>3-layer architecture (System/Process/Experience APIs) with full connector library for all 8+ systems. APIs serve both OneAnalytics and agent orchestration via MCP. Deployed on CloudHub 2.0 (Azure-aligned).</p>
-      <p style="margin-top:12px;"><strong>Why:</strong> Only option that simultaneously solves data platform integration AND agent governance. Pre-built connectors for OncoEMR (HL7/FHIR), Salesforce (native), ServiceNow, Workday, Databricks. MCP Connector enables agent tool layer without separate infrastructure.</p>
-    </div>
-    <div class="card">
-      <h3>Option B: Expand Mirth Connect</h3>
-      <p>Add more Mirth channels for each new system and tool connection. Extend the existing clinical messaging approach to enterprise integration needs.</p>
-      <p style="margin-top:12px;"><strong>Why not:</strong> Mirth is channel-based, built for HL7 pipes between clinical systems. No connectors for Salesforce, Workday, ServiceNow, Databricks. No API management, no reuse layer, no MCP support. Mirth's licensing transition (March 2025) adds cost risk. Acceptable for simple HL7 routing; structurally inadequate for enterprise platform needs.</p>
+      <p>Agent detects ambiguity or confidence below threshold and routes to a human specialist. Examples: document classification below 85% confidence, patient match with multiple candidates, PA denial requiring clinical review. Governance levels tie directly to HIPAA compliance requirements for PHI-governed environments.</p>
     </div>
   </div>
 
-  <!-- Option 2 -->
-  <h3 style="color:var(--white); font-size:18px; margin:32px 0 12px;">Decision 2: Agent-to-System Connectivity</h3>
-  <div class="card-grid">
-    <div class="card" style="border-color:var(--green);">
-      <span class="tag" style="background:rgba(16,185,129,0.15); color:var(--green);">RECOMMENDED</span>
-      <h3>Option A: MuleSoft as MCP Server</h3>
-      <p>Expose all MuleSoft APIs as MCP tools via MCP Connector v1.3.1. Any MCP-compatible agent discovers and calls governed enterprise actions through a standard protocol. Flex Gateway enforces policies (JWT, rate limits, PII detection).</p>
-      <p style="margin-top:12px;"><strong>Why:</strong> Open standard (not vendor lock-in), governed (every call logged and policy-controlled), reusable (same APIs serve data platform and agents), and future-proof (supports Cencora-mandated agents without new infrastructure).</p>
-    </div>
-    <div class="card">
-      <h3>Option B: Direct API Calls Per Agent</h3>
-      <p>Each AI tool builds its own REST client for each system it needs to access. No shared governance layer.</p>
-      <p style="margin-top:12px;"><strong>Why not:</strong> This is OneOncology's current trajectory. 5+ tools each building their own connections = N&times;M integration sprawl. No audit trail, no rate limiting, no auth governance. Every new agent or system multiplies the problem. Compliance risk under Cencora standards.</p>
-    </div>
-  </div>
-
-  <!-- Option 3 -->
-  <h3 style="color:var(--white); font-size:18px; margin:32px 0 12px;">Decision 3: Mirth Migration Strategy</h3>
-  <div class="card-grid">
-    <div class="card" style="border-color:var(--green);">
-      <span class="tag" style="background:rgba(16,185,129,0.15); color:var(--green);">RECOMMENDED</span>
-      <h3>Option A: Strangler-Fig Pattern</h3>
-      <p>Wrap existing Mirth channels behind MuleSoft APIs. Traffic migrates incrementally &mdash; no downtime, no workflow disruption. Mirth channels decommissioned as each API is validated.</p>
-      <p style="margin-top:12px;"><strong>Why:</strong> Zero-risk migration. Clinical workflows continue uninterrupted during transition. Each practice migrates at its own pace. Mirth investment is preserved until the API alternative is proven in production.</p>
-    </div>
-    <div class="card">
-      <h3>Option B: Rip-and-Replace</h3>
-      <p>Decommission Mirth and rebuild all clinical messaging in MuleSoft simultaneously.</p>
-      <p style="margin-top:12px;"><strong>Why not:</strong> 645+ sites with live clinical workflows. Any disruption to HL7 message routing impacts patient care. The risk profile is unacceptable for a healthcare MSO. Strangler-fig achieves the same end state with near-zero risk.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Section 6: Fit Assessment -->
-<div class="section" id="fit">
-  <div class="section-num">Section 06 &mdash; Fit Assessment</div>
-  <h2>Capability Mapping</h2>
-  <div class="headline">Where MuleSoft is best-fit, where it competes, and where something else is better.</div>
-
-  <table>
-    <thead>
-      <tr><th>Requirement</th><th>Best-Fit Solution</th><th>MuleSoft Solution</th><th>Fit</th><th>Note</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>OneAnalytics data normalization across 36 practices</td>
-        <td>API-led connectivity with data transformation</td>
-        <td>System + Process APIs with DataWeave</td>
-        <td><span class="fit-green">GREEN</span></td>
-        <td>Core competency. Pre-built HL7/FHIR connectors + Salesforce native.</td>
-      </tr>
-      <tr>
-        <td>Agent orchestration &amp; MCP governance</td>
-        <td>MuleSoft MCP Connector + Flex Gateway</td>
-        <td>MCP Server + Flex Gateway policies</td>
-        <td><span class="fit-green">GREEN</span></td>
-        <td>No alternative combines healthcare protocol support with MCP Server and enterprise connector library.</td>
-      </tr>
-      <tr>
-        <td>Fax &amp; document intake automation</td>
-        <td>MuleSoft IDP or Medsender</td>
-        <td>MuleSoft IDP (Intelligent Document Processing)</td>
-        <td><span class="fit-green">GREEN</span></td>
-        <td>IDP + full orchestration (routing, multi-EHR) vs. Medsender point solution.</td>
-      </tr>
-      <tr>
-        <td>Prior authorization automation (CMS mandate)</td>
-        <td>EHR-to-payer API integration</td>
-        <td>PA Automation XAPI + Revenue Cycle PAPI</td>
-        <td><span class="fit-green">GREEN</span></td>
-        <td>Pre-built payer connectors. Compliance-deadline driven (Jan 2027).</td>
-      </tr>
-      <tr>
-        <td>HL7v2 clinical message routing (existing Mirth scope)</td>
-        <td>Mirth Connect (incumbent) or MuleSoft</td>
-        <td>MuleSoft HL7 Connector</td>
-        <td><span class="fit-yellow">YELLOW</span></td>
-        <td>Mirth does HL7 pipes well. MuleSoft wins on platform value: same HL7 capability PLUS API management, reuse, agent tooling. Strangler-fig migration recommended &mdash; don't displace Mirth until the API alternative is proven per-channel.</td>
-      </tr>
-      <tr>
-        <td>Advanced analytics &amp; ML model execution</td>
-        <td>Databricks (already in stack)</td>
-        <td>Databricks SAPI for connectivity</td>
-        <td><span class="fit-red">RED</span></td>
-        <td>Databricks is better for heavy analytics/ML. MuleSoft connects to it (Databricks SAPI) and exposes results as APIs. Complementary, not competitive.</td>
-      </tr>
-      <tr>
-        <td>Master Data Management (patient identity across EHRs)</td>
-        <td>Informatica MDM</td>
-        <td>MuleSoft provides connectivity; Informatica provides MDM</td>
-        <td><span class="fit-red">RED</span></td>
-        <td>Patient identity resolution across 36 practices needs probabilistic + deterministic matching. Informatica MDM is purpose-built. MuleSoft feeds it data and consumes golden records. Consider for Phase 2.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="callout">
-    <div class="callout-title">The RED Items Are Strategic</div>
-    <p>When you tell a CTO "for analytics workloads, Databricks is actually better &mdash; and here's how MuleSoft connects to it," you earn instant credibility. The same applies to Informatica MDM for patient identity. These aren't weaknesses; they're proof that the recommendation is architecturally rigorous, not a product pitch. And both tools integrate natively with MuleSoft.</p>
+  <div class="callout-amber callout">
+    <div class="callout-title">Why Clinical Message Routing Is Not Enough</div>
+    <p>Mirth Connect is effective for HL7/FHIR message routing between clinical systems &mdash; and it should continue doing that where it works well. However, agent orchestration, MCP tool serving, and enterprise system connectivity (Salesforce, Workday, ServiceNow, Databricks) are outside its architectural scope. The question is not "replace Mirth" but rather "what sits above Mirth to govern agents and connect the enterprise?"</p>
   </div>
 </div>
 
 <!-- Footer -->
 <div class="footer">
-  <p><strong>OneOncology Integration &amp; Agent Architecture Brief</strong></p>
-  <p>Prepared by Michael Busacca, Enterprise Account Executive &mdash; MuleSoft Healthcare</p>
-  <p>March 2026 &bull; Internal use only &bull; Confidential</p>
-  <p style="margin-top:16px; color:var(--gray-600);">Architecture advisory model: Gaurav Talwadker, Senior Director Enterprise Architecture &mdash; Salesforce</p>
-  <p style="color:var(--gray-600);">Data sources: Supabase territory database, ZoomInfo, web research, internal account artifacts.</p>
+  <p><strong>OneOncology &mdash; Integration &amp; Agent Architecture Brief</strong></p>
+  <p>March 2026 &bull; Prepared for OneOncology Technology Leadership</p>
 </div>
 
 </div><!-- end .main -->
