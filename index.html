@@ -6,34 +6,35 @@
 <title>OneOncology — Integration & Agent Architecture</title>
 <style>
 :root {
-  --navy: #0A1628;
-  --navy-light: #121E33;
-  --navy-mid: #1A2A45;
+  /* MuleSoft Brand — Primary */
+  --navy: #032D60;
+  --navy-light: #0B5CAB;
+  --navy-mid: #0B5CAB;
   --white: #FFFFFF;
-  --gray-100: #F3F4F6;
-  --gray-200: #E5E7EB;
-  --gray-300: #D1D5DB;
-  --gray-400: #9CA3AF;
-  --gray-500: #6B7280;
-  --gray-600: #4B5563;
-  --mulesoft: #00A1DF;
-  --mulesoft-dark: #0078A8;
-  --salesforce: #00A1E0;
+  --gray-100: #EEF4FF;
+  --gray-200: #CFE9FE;
+  --gray-300: #CFE9FE;
+  --gray-400: #7CBCF5;
+  --gray-500: #4A90D9;
+  --gray-600: #0B5CAB;
+  --mulesoft: #0176D3;
+  --mulesoft-dark: #032D60;
+  --salesforce: #0D9DDA;
   --salesforce-dark: #032D60;
-  --green: #10B981;
-  --green-bg: #064E3B;
-  --yellow: #F59E0B;
-  --yellow-bg: #78350F;
-  --red: #EF4444;
-  --red-bg: #7F1D1D;
-  --purple: #8B5CF6;
-  --amber: #F59E0B;
-  --accent: #38BDF8;
+  --green: #41B658;
+  --green-bg: #1A3D26;
+  --yellow: #FE9339;
+  --yellow-bg: #5C3310;
+  --red: #FF538A;
+  --red-bg: #5C1A2E;
+  --purple: #7526E3;
+  --amber: #FE9339;
+  --accent: #0D9DDA;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Salesforce Sans', 'SF Pro Display', Arial, sans-serif;
   background: var(--navy);
   color: var(--gray-100);
   line-height: 1.6;
@@ -155,75 +156,103 @@ li strong { color: var(--gray-100); }
   </div>
 </div>
 
-<!-- Section 2: Current State -->
-<div class="section" id="current">
-  <div class="section-num">Section 02 &mdash; Current State Assessment</div>
-  <h2>Where OneOncology Stands Today</h2>
-  <div class="headline">36 practices, 8+ enterprise systems, and every AI tool building its own connection.</div>
+<!-- Section 2: Current State — Slide Layout -->
+<div class="section" id="current" style="padding:60px 64px; min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
+  <div class="section-num">Current State</div>
+  <h2 style="font-size:38px; margin-bottom:6px;">Where OneOncology Stands Today</h2>
+  <p style="font-size:17px; color:var(--accent); font-weight:600; margin-bottom:40px;">36 practices. 8+ enterprise systems. Every AI tool building its own connection.</p>
 
-  <p style="font-size:15px; color:var(--gray-300); margin-bottom:32px;">OneOncology's architecture reflects years of growth through acquisition &mdash; each practice brought its own EHR, billing system, and data workflows. This creates integration complexity that manual approaches and clinical message routers can no longer sustain at the scale Cencora's standardization mandate requires.</p>
-
-  <h3 style="color:var(--white); font-size:20px; margin-bottom:16px;">Known System Landscape</h3>
-  <table>
-    <thead>
-      <tr><th>System</th><th>Category</th><th>Integration Relevance</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>OncoEMR (Flatiron)</strong></td><td>Clinical EHR</td><td>Primary clinical data source across practices. FHIR R4 and HL7v2 interfaces.</td></tr>
-      <tr><td><strong>GE Centricity</strong></td><td>Clinical EHR (legacy)</td><td>Present in acquired practices. Adds heterogeneous EHR normalization requirement.</td></tr>
-      <tr><td><strong>Salesforce CRM</strong></td><td>CRM</td><td>In production. Referral tracking, provider network management.</td></tr>
-      <tr><td><strong>Azure (multi-region)</strong></td><td>Cloud Platform</td><td>Primary cloud infrastructure. CloudHub 2.0 aligns natively.</td></tr>
-      <tr><td><strong>Databricks</strong></td><td>Data Analytics</td><td>Analytics and ML workloads. Complementary &mdash; API orchestration sits above the data layer.</td></tr>
-      <tr><td><strong>ServiceNow</strong></td><td>ITSM</td><td>IT operations workflows across 645+ sites.</td></tr>
-      <tr><td><strong>Workday</strong></td><td>HR/Finance</td><td>Shared services under Cencora's enterprise integration mandate.</td></tr>
-      <tr><td><strong>Mirth Connect</strong></td><td>Integration</td><td>Likely incumbent for HL7/FHIR clinical messaging. Channel-based architecture.</td></tr>
-    </tbody>
-  </table>
-
-  <h3 style="color:var(--white); font-size:20px; margin:32px 0 16px;">AI &amp; Clinical Decision Tools (Active)</h3>
-  <table>
-    <thead>
-      <tr><th>Tool</th><th>Purpose</th><th>Connection Pattern Today</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>Flatiron Assist</strong></td><td>Clinical decision support</td><td>Direct to OncoEMR (point-to-point)</td></tr>
-      <tr><td><strong>Genomic Lookback</strong></td><td>Genomic matching for clinical trials</td><td>Direct to OncoEMR (point-to-point)</td></tr>
-      <tr><td><strong>ViTE</strong></td><td>Clinical trial matching</td><td>Direct to OncoEMR (point-to-point)</td></tr>
-      <tr><td><strong>ProMPT</strong></td><td>Precision medicine platform</td><td>Direct to OncoEMR (point-to-point)</td></tr>
-      <tr><td><strong>Oncology Quality Hub</strong></td><td>QCDR/MIPS reporting</td><td>Batch aggregation from 36 practices</td></tr>
-    </tbody>
-  </table>
-
-  <h3 style="color:var(--white); font-size:20px; margin:32px 0 16px;">Complexity Drivers</h3>
-  <div class="card-grid">
-    <div class="card">
-      <span class="tag tag-critical">Integration Debt</span>
-      <h3>Point-to-Point Sprawl</h3>
-      <p>Each clinical tool connects directly to OncoEMR. Each acquired practice brought its own EHR and billing workflows. No shared API layer means every new tool or practice multiplies the connection count.</p>
+  <!-- System Landscape — visual grid instead of table -->
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:40px;">
+    <div style="background:var(--navy); border:1px solid var(--mulesoft); border-radius:10px; padding:20px; text-align:center;">
+      <div style="font-size:22px; font-weight:700; color:var(--white);">OncoEMR</div>
+      <div style="font-size:11px; color:var(--gray-400); margin-top:4px;">Flatiron &bull; Clinical EHR</div>
+      <div style="font-size:10px; color:var(--mulesoft); margin-top:8px;">FHIR R4 + HL7v2</div>
     </div>
-    <div class="card">
-      <span class="tag tag-critical">Agent Governance Gap</span>
-      <h3>Ungoverned AI Connections</h3>
-      <p>5+ AI tools calling systems independently with no audit trail, no retry logic, no authentication governance, no observability. Enterprise compliance controls cannot be enforced without a governance layer.</p>
+    <div style="background:var(--navy); border:1px solid var(--mulesoft); border-radius:10px; padding:20px; text-align:center;">
+      <div style="font-size:22px; font-weight:700; color:var(--white);">GE Centricity</div>
+      <div style="font-size:11px; color:var(--gray-400); margin-top:4px;">Legacy EHR &bull; Acquired practices</div>
+      <div style="font-size:10px; color:var(--mulesoft); margin-top:8px;">HL7v2 + REST</div>
     </div>
-    <div class="card">
-      <span class="tag tag-high">Platform Ceiling</span>
-      <h3>Clinical Router vs. Enterprise Fabric</h3>
-      <p>Mirth Connect handles HL7/FHIR message routing effectively for clinical messaging. It was not designed to connect Salesforce, Workday, ServiceNow, or Databricks &mdash; nor to support agent orchestration or enterprise workflow patterns.</p>
+    <div style="background:var(--navy); border:1px solid var(--salesforce); border-radius:10px; padding:20px; text-align:center;">
+      <div style="font-size:22px; font-weight:700; color:var(--salesforce);">Salesforce</div>
+      <div style="font-size:11px; color:var(--gray-400); margin-top:4px;">CRM &bull; In production</div>
+      <div style="font-size:10px; color:var(--salesforce); margin-top:8px;">REST + Platform Events</div>
     </div>
-    <div class="card">
-      <span class="tag tag-high">Regulatory Clock</span>
-      <h3>CMS PA Automation Deadline</h3>
-      <p>Electronic prior authorization required by January 1, 2027. 39 PA requests per physician per week across 645+ sites. EHR-to-payer API integration must be operational before the mandate takes effect.</p>
+    <div style="background:var(--navy); border:1px solid var(--mulesoft); border-radius:10px; padding:20px; text-align:center;">
+      <div style="font-size:22px; font-weight:700; color:var(--white);">Azure</div>
+      <div style="font-size:11px; color:var(--gray-400); margin-top:4px;">Cloud &bull; Multi-region</div>
+      <div style="font-size:10px; color:var(--mulesoft); margin-top:8px;">Primary infrastructure</div>
+    </div>
+    <div style="background:var(--navy); border:1px solid var(--mulesoft); border-radius:10px; padding:20px; text-align:center;">
+      <div style="font-size:22px; font-weight:700; color:var(--white);">Databricks</div>
+      <div style="font-size:11px; color:var(--gray-400); margin-top:4px;">Analytics &bull; ML</div>
+      <div style="font-size:10px; color:var(--mulesoft); margin-top:8px;">SQL + REST</div>
+    </div>
+    <div style="background:var(--navy); border:1px solid var(--mulesoft); border-radius:10px; padding:20px; text-align:center;">
+      <div style="font-size:22px; font-weight:700; color:var(--white);">ServiceNow</div>
+      <div style="font-size:11px; color:var(--gray-400); margin-top:4px;">ITSM &bull; 645+ sites</div>
+      <div style="font-size:10px; color:var(--mulesoft); margin-top:8px;">REST API</div>
+    </div>
+    <div style="background:var(--navy); border:1px solid var(--mulesoft); border-radius:10px; padding:20px; text-align:center;">
+      <div style="font-size:22px; font-weight:700; color:var(--white);">Workday</div>
+      <div style="font-size:11px; color:var(--gray-400); margin-top:4px;">HR / Finance</div>
+      <div style="font-size:10px; color:var(--mulesoft); margin-top:8px;">SOAP / REST</div>
+    </div>
+    <div style="background:var(--navy); border:1px dashed var(--gray-400); border-radius:10px; padding:20px; text-align:center;">
+      <div style="font-size:22px; font-weight:700; color:var(--gray-400);">Mirth Connect</div>
+      <div style="font-size:11px; color:var(--gray-500); margin-top:4px;">Integration &bull; HL7/FHIR</div>
+      <div style="font-size:10px; color:var(--gray-500); margin-top:8px;">Channel-based routing</div>
     </div>
   </div>
 
-  <div class="callout">
-    <div class="callout-title">Discovery Questions for the CTO</div>
-    <p>1. What is the current integration pattern between OncoEMR and your clinical tools &mdash; are they calling APIs or using database-level connections?<br>
-    2. How are you planning to normalize data across GE Centricity practices into OneAnalytics &mdash; ETL batch, real-time CDC, or another approach?<br>
-    3. Where does Mirth Connect sit in the architecture today &mdash; which message types, which practices, how many channels?<br>
-    4. How is Cencora defining technology standardization requirements &mdash; is there an enterprise architecture mandate in development?</p>
+  <!-- AI Tools — horizontal row -->
+  <p style="font-size:12px; font-weight:700; color:var(--amber); text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;">AI &amp; Clinical Decision Tools — All Point-to-Point Today</p>
+  <div style="display:flex; gap:12px; margin-bottom:40px; flex-wrap:wrap;">
+    <div style="background:rgba(254,147,57,0.1); border:1px solid var(--amber); border-radius:8px; padding:12px 20px; text-align:center;">
+      <div style="font-size:14px; font-weight:700; color:var(--amber);">Flatiron Assist</div>
+      <div style="font-size:10px; color:var(--gray-400);">Clinical decision support</div>
+    </div>
+    <div style="background:rgba(254,147,57,0.1); border:1px solid var(--amber); border-radius:8px; padding:12px 20px; text-align:center;">
+      <div style="font-size:14px; font-weight:700; color:var(--amber);">Genomic Lookback</div>
+      <div style="font-size:10px; color:var(--gray-400);">Trial matching</div>
+    </div>
+    <div style="background:rgba(254,147,57,0.1); border:1px solid var(--amber); border-radius:8px; padding:12px 20px; text-align:center;">
+      <div style="font-size:14px; font-weight:700; color:var(--amber);">ViTE</div>
+      <div style="font-size:10px; color:var(--gray-400);">Clinical trial matching</div>
+    </div>
+    <div style="background:rgba(254,147,57,0.1); border:1px solid var(--amber); border-radius:8px; padding:12px 20px; text-align:center;">
+      <div style="font-size:14px; font-weight:700; color:var(--amber);">ProMPT</div>
+      <div style="font-size:10px; color:var(--gray-400);">Precision medicine</div>
+    </div>
+    <div style="background:rgba(254,147,57,0.1); border:1px solid var(--amber); border-radius:8px; padding:12px 20px; text-align:center;">
+      <div style="font-size:14px; font-weight:700; color:var(--amber);">Quality Hub</div>
+      <div style="font-size:10px; color:var(--gray-400);">QCDR / MIPS</div>
+    </div>
+  </div>
+
+  <!-- Complexity Drivers — 2x2 visual -->
+  <div class="card-grid">
+    <div class="card" style="border-left:4px solid var(--red); background:var(--navy);">
+      <span class="tag tag-critical">Critical</span>
+      <h3>Point-to-Point Sprawl</h3>
+      <p>Each tool connects directly to OncoEMR. Each practice brought its own EHR. No shared API layer &mdash; every new tool multiplies the connection count.</p>
+    </div>
+    <div class="card" style="border-left:4px solid var(--red); background:var(--navy);">
+      <span class="tag tag-critical">Critical</span>
+      <h3>Ungoverned AI Connections</h3>
+      <p>5+ AI tools calling systems independently. No audit trail, no retry logic, no authentication governance, no observability.</p>
+    </div>
+    <div class="card" style="border-left:4px solid var(--amber); background:var(--navy);">
+      <span class="tag tag-high">High</span>
+      <h3>Clinical Router ≠ Enterprise Fabric</h3>
+      <p>Mirth handles HL7/FHIR effectively. It was not designed to connect Salesforce, Workday, ServiceNow, or Databricks &mdash; nor to govern agents.</p>
+    </div>
+    <div class="card" style="border-left:4px solid var(--amber); background:var(--navy);">
+      <span class="tag tag-high">High</span>
+      <h3>CMS PA Automation Deadline</h3>
+      <p>Electronic prior auth required Jan 1, 2027. 39 PA requests per physician per week across 645+ sites.</p>
+    </div>
   </div>
 </div>
 
